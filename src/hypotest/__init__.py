@@ -1,0 +1,1 @@
+"""Hypothesis Tester core (M0)."""

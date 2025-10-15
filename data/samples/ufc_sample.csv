@@ -1,0 +1,4 @@
+fight_id,weight_class,winner,method,rounds,kd_red,kd_blue,sig_str_red,sig_str_blue
+1001,Lightweight,Red,Decision,3,0,1,55,48
+1002,Welterweight,Blue,KO/TKO,2,1,0,23,30
+1003,Featherweight,Red,Submission,1,0,0,10,5

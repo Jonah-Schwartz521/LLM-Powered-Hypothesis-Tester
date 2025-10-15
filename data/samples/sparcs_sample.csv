@@ -1,0 +1,5 @@
+encounter_id,length_of_stay,procedure_count,total_charges,admission_day,discharge_disposition
+1,2,0,12000,Mon,Home
+2,5,2,58000,Fri,SNF
+3,1,1,9000,Tue,Home
+4,7,4,160000,Sat,Expired

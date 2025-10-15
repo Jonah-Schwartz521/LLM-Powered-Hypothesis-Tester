@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypotest"
+version = "0.0.1"
+description = "LLM-Powered Hypothesis Tester (M0 scaffold)"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+addopts = "-q"
