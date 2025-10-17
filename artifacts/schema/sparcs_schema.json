@@ -1,0 +1,65 @@
+{
+  "columns": {
+    "encounter_id": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "encounter_date": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.9
+    },
+    "age": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "sex": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.2
+    },
+    "length_of_stay": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.7
+    },
+    "procedure_count": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.6
+    },
+    "total_charges": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "admission_type": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.2
+    },
+    "admission_day": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.5
+    },
+    "discharge_disposition": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.2
+    },
+    "principal_diagnosis": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.6
+    },
+    "primary_payer": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.3
+    }
+  },
+  "rows": 10
+}

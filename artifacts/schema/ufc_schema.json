@@ -1,0 +1,75 @@
+{
+  "columns": {
+    "fight_id": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "event_date": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "weight_class": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.5
+    },
+    "red_fighter": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "blue_fighter": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "winner": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.2
+    },
+    "method": {
+      "dtype": "category",
+      "non_null": 10,
+      "unique_frac": 0.3
+    },
+    "rounds": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.3
+    },
+    "kd_red": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.3
+    },
+    "kd_blue": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.3
+    },
+    "sig_str_red": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "sig_str_blue": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 1.0
+    },
+    "td_red": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.6
+    },
+    "td_blue": {
+      "dtype": "int",
+      "non_null": 10,
+      "unique_frac": 0.6
+    }
+  },
+  "rows": 10
+}
