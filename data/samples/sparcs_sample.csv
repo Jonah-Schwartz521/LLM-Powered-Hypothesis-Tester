@@ -1,5 +1,11 @@
-encounter_id,length_of_stay,procedure_count,total_charges,admission_day,discharge_disposition
-1,2,0,12000,Mon,Home
-2,5,2,58000,Fri,SNF
-3,1,1,9000,Tue,Home
-4,7,4,160000,Sat,Expired
+encounter_id,encounter_date,age,sex,length_of_stay,procedure_count,total_charges,admission_type,admission_day,discharge_disposition,principal_diagnosis,primary_payer
+1,2024-10-10,11,F,1,4,100276,Urgent,Tue,Home,E11 Type 2 DM,Medicare
+2,2024-11-01,49,F,11,0,31764,Emergency,Wed,Home,K40 Hernia,Private
+3,2024-01-16,44,F,2,4,23078,Emergency,Fri,Home,E11 Type 2 DM,Medicaid
+4,2024-02-08,30,F,11,2,42643,Emergency,Tue,Home,S72 Hip fracture,Medicare
+5,2024-08-30,2,M,12,0,3000,Emergency,Wed,Home,C50 Breast CA,Private
+6,2024-12-30,73,M,2,5,8324,Emergency,Wed,Home,I10 Hypertension,Medicaid
+7,2024-01-09,31,F,7,0,98231,Emergency,Thu,SNF,C50 Breast CA,Private
+8,2024-08-30,62,M,2,3,12814,Emergency,Wed,Home,I10 Hypertension,Private
+9,2024-02-19,38,F,8,1,17580,Emergency,Sat,Home,O80 Liveborn,Medicaid
+10,2024-08-25,35,M,13,5,90923,Emergency,Wed,Home,I10 Hypertension,Medicare

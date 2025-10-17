@@ -1,4 +1,11 @@
-fight_id,weight_class,winner,method,rounds,kd_red,kd_blue,sig_str_red,sig_str_blue
-1001,Lightweight,Red,Decision,3,0,1,55,48
-1002,Welterweight,Blue,KO/TKO,2,1,0,23,30
-1003,Featherweight,Red,Submission,1,0,0,10,5
+fight_id,event_date,weight_class,red_fighter,blue_fighter,winner,method,rounds,kd_red,kd_blue,sig_str_red,sig_str_blue,td_red,td_blue
+1001,2024-02-01,Welterweight,Red_F1001,Blue_F1001,Blue,Submission,3,1,0,15,68,5,0
+1002,2024-02-02,Bantamweight,Red_F1002,Blue_F1002,Red,KO/TKO,3,2,1,12,116,2,5
+1003,2024-02-04,Featherweight,Red_F1003,Blue_F1003,Blue,KO/TKO,3,1,0,67,22,4,4
+1004,2024-02-16,Lightweight,Red_F1004,Blue_F1004,Red,Decision,2,2,1,13,58,4,1
+1005,2024-03-07,Featherweight,Red_F1005,Blue_F1005,Red,KO/TKO,2,1,2,113,55,0,4
+1006,2024-03-14,Light Heavyweight,Red_F1006,Blue_F1006,Red,KO/TKO,3,1,2,101,49,5,1
+1007,2024-05-15,Light Heavyweight,Red_F1007,Blue_F1007,Blue,KO/TKO,2,2,0,96,95,4,3
+1008,2024-05-26,Welterweight,Red_F1008,Blue_F1008,Red,KO/TKO,3,1,1,9,21,1,0
+1009,2024-06-07,Light Heavyweight,Red_F1009,Blue_F1009,Red,KO/TKO,3,0,2,71,77,3,3
+1010,2024-06-09,Welterweight,Red_F1010,Blue_F1010,Red,Submission,1,1,1,118,29,1,2
