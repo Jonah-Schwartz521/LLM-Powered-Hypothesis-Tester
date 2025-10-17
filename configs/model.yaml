@@ -1,0 +1,5 @@
+llm_provider: "ollama"
+model: "mistral"
+mode: "local"
+max_tokens: 400
+temperature: 0.2
