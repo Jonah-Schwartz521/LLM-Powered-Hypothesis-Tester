@@ -3,8 +3,9 @@ import json
 from pathlib import Path
 from typing import Dict, Any, Optional
 import typer
+from hypotest.router import route_test, covariate_suggestion
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(name="hypothesis", add_completion=False)
 
 def guess_relation(q: str) -> str:
     ql = q.lower()
@@ -56,6 +57,12 @@ def suggest_test(relation: str, vars):
 def parse_question(question: str, schema: Optional[Dict[str, Any]] = None):
     relation = guess_relation(question)
     vars_found = extract_variables_simple(question)
+
+    # If a schema is provided, keep only variables that exist in the schema
+    if schema and "columns" in schema:
+        cols = set(schema["columns"].keys())
+        vars_found = [v for v in vars_found if v in cols]
+
     hyp = build_hypotheses(relation, vars_found)
     test = suggest_test(relation, vars_found)
     return {
@@ -71,9 +78,30 @@ def parse_question(question: str, schema: Optional[Dict[str, Any]] = None):
 @app.command("parse")
 def cli_parse(
     q: str = typer.Option(..., "--q", help="Natural language hypothesis"),
-    out: Optional[str] = typer.Option(None, "--out", help="Path to write JSON output"),
+    schema_path: str | None = typer.Option(None, "--schema", help="Path to schema JSON (optional)"),
+    out: str | None = typer.Option(None, "--out", help="Write JSON here (optional)"),
 ):
-    result = parse_question(q)
+    # 1) Load schema if provided
+    schema: Optional[Dict[str, Any]] = None
+    if schema_path:
+        p = Path(schema_path)
+        if p.exists():
+            try:
+                schema = json.loads(p.read_text())
+            except Exception as e:
+                raise typer.BadParameter(f"Failed to read schema JSON at {schema_path}: {e}")
+
+    # 2) Build the parse result (schema-aware)
+    result = parse_question(q, schema)
+
+    # 2b) Routing + covariate suggestion
+    schema_safe = schema or {"columns": {}, "rows": 0}
+    routed = route_test(result["relation"], result["variables"], schema_safe)
+    covar = covariate_suggestion(result["relation"], result["variables"], schema_safe)
+    result["routed_test"] = routed
+    result["covariate_suggestion"] = covar
+
+    # 3) Output
     text = json.dumps(result, indent=2)
     if out:
         Path(out).parent.mkdir(parents=True, exist_ok=True)
@@ -81,6 +109,7 @@ def cli_parse(
         typer.echo(f"Wrote {out}")
     else:
         typer.echo(text)
+    
 
 if __name__ == "__main__":
     app()
