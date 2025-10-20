@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 import typer
 from hypotest.router import route_test, covariate_suggestion
+from hypotest.runner import run_bivariate
 
 app = typer.Typer(name="hypothesis", add_completion=False)
 
@@ -80,6 +81,7 @@ def cli_parse(
     q: str = typer.Option(..., "--q", help="Natural language hypothesis"),
     schema_path: str | None = typer.Option(None, "--schema", help="Path to schema JSON (optional)"),
     out: str | None = typer.Option(None, "--out", help="Write JSON here (optional)"),
+    data_path: str | None = typer.Option(None, "--data", help="Path to CSV to run the suggested test (optional)"),
 ):
     # 1) Load schema if provided
     schema: Optional[Dict[str, Any]] = None
@@ -100,6 +102,18 @@ def cli_parse(
     covar = covariate_suggestion(result["relation"], result["variables"], schema_safe)
     result["routed_test"] = routed
     result["covariate_suggestion"] = covar
+
+    # 2c) Optional: execute the suggested test end-to-end on a CSV
+    if data_path:
+        if schema is None:
+            raise typer.BadParameter("--data requires --schema so we know column types for routing")
+        p_data = Path(data_path)
+        if not p_data.exists():
+            raise typer.BadParameter(f"Data file not found: {data_path}")
+        import pandas as pd
+        df = pd.read_csv(p_data)
+        exec_res = run_bivariate(df, result["relation"], result["variables"], schema)
+        result["execution"] = exec_res
 
     # 3) Output
     text = json.dumps(result, indent=2)
