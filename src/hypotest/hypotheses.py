@@ -5,6 +5,7 @@ from typing import Dict, Any, Optional
 import typer
 from hypotest.router import route_test, covariate_suggestion
 from hypotest.runner import run_bivariate
+from hypotest.narrator import summarize_result
 
 app = typer.Typer(name="hypothesis", add_completion=False)
 
@@ -114,6 +115,7 @@ def cli_parse(
         df = pd.read_csv(p_data)
         exec_res = run_bivariate(df, result["relation"], result["variables"], schema)
         result["execution"] = exec_res
+        result["summary_text"] = summarize_result(exec_res)
 
     # 3) Output
     text = json.dumps(result, indent=2)
